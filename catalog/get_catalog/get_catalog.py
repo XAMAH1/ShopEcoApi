@@ -5,10 +5,10 @@ from database.main import *
 
 
 @decorator_autme_user
-async def get_all_catolog():
+async def get_all_catalog():
     try:
         catolog_all = []
-        check_color: catolog = session.query(catolog).all()
+        check_color: catalog = session.query(catalog).all()
         for i in check_color:
             catolog_all.append({
                 "id": i.id,
