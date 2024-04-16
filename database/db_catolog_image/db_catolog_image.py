@@ -4,8 +4,8 @@ from database.base import base
 from sqlalchemy import *
 
 
-class product_type(base):
-    __tablename__ = 'product_type'
+class catolog_image(base):
+    __tablename__ = 'catolog_image'
 
     id = Column(Integer, primary_key=True)
     product_id = Column(Integer, ForeignKey("catolog.id"))
