@@ -13,11 +13,11 @@ async def get_all_catolog():
             catolog_all.append({
                 "id": i.id,
                 "name": i.name,
-                "product_type": i.product_type_realt.name,
+                "product_type": i.type_realt.name,
                 "description": i.description,
                 "price": i.price
             })
-        return jsonify({"cats": catolog_all}), 200
+        return jsonify({"success": True, "catolog": catolog_all}), 200
     except Exception as e:
         print(e)
         session.rollback()
