@@ -3,15 +3,16 @@ from flask import Blueprint, request
 from flask_cors import cross_origin
 
 from catolog.get_catolog.get_catolog import get_all_catolog
+from catolog.post_catolog.post_catolog import new_catolog
 
 catolog_profile = Blueprint('catolog_profile', __name__)
 
 
-@catolog_profile.route("/cats", methods=["POST", "GET"])
+@catolog_profile.route("/catolog", methods=["POST", "GET"])
 @cross_origin()
 def cats_all():
-    # if request.method == "POST":
-    #     return asyncio.run(new_cats())
+    if request.method == "POST":
+        return asyncio.run(new_catolog())
     if request.method == "GET":
         return asyncio.run(get_all_catolog())
 

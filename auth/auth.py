@@ -37,6 +37,8 @@ def auth():
 
 def auth_admin():
     try:
-        pass
+        result = requests.get("http://eco-74.online:5425/api/check/token/admin",
+                              headers={"Authorization": request.headers["Authorization"]})
+        return result.json()
     except Exception as e:
-        return {"success": False, "message": "Укажите токен авторизации"}
+        return {"success": False, "message": "Ошибка! Сервер не доступен"}
