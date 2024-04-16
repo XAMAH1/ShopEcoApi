@@ -9,4 +9,4 @@ class product_type(base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(255), nullable=False)
-    product_type_realt = relationship("catolog")
+    product_type_realt = relationship("catalog")

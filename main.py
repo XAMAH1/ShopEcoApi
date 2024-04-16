@@ -1,7 +1,7 @@
 from flask import *
 from flask_cors import CORS, cross_origin
 
-from catolog.main import catolog_profile
+from catalog.main import catalog_profile
 from database.main import *
 from config import API_HOST, API_PORT
 
@@ -10,7 +10,7 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 
-app.register_blueprint(catolog_profile, url_prefix="/api")
+app.register_blueprint(catalog_profile, url_prefix="/api")
 
 
 @app.errorhandler(404)

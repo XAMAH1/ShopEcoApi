@@ -8,6 +8,6 @@ class cart(base):
     __tablename__ = 'cart'
 
     id = Column(Integer, primary_key=True)
-    product_id = Column(Integer, ForeignKey('catolog.id'))
+    product_id = Column(Integer, ForeignKey('catalog.id'))
     user_id = Column(Integer, nullable=False)
     count = Column(Integer, nullable=False, default=1)
