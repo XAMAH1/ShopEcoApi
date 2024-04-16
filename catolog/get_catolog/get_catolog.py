@@ -5,18 +5,18 @@ from database.main import *
 
 
 @decorator_autme_user
-async def get_all_catolog():
+async def get_all_catalog():
     try:
-        catolog_all = []
-        check_color: catolog = session.query(catolog).all()
+        catalog_all = []
+        check_color: catalog = session.query(catalog).all()
         for i in check_color:
-            catolog_all.append({
+            catalog_all.append({
                 "id": i.id,
                 "name": i.name,
                 "product_type": i.type_realt.name,
                 "price": i.price
             })
-        return jsonify({"success": True, "catolog": catolog_all}), 200
+        return jsonify({"success": True, "catalog": catalog_all}), 200
     except Exception as e:
         print(e)
         session.rollback()

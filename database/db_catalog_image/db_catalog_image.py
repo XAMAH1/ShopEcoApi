@@ -4,10 +4,10 @@ from database.base import base
 from sqlalchemy import *
 
 
-class catolog_image(base):
-    __tablename__ = 'catolog_image'
+class catalog_image(base):
+    __tablename__ = 'catalog_image'
 
     id = Column(Integer, primary_key=True)
-    product_id = Column(Integer, ForeignKey("catolog.id"))
+    product_id = Column(Integer, ForeignKey("catalog.id"))
     image_path = Column(String(528), nullable=False)
-    product_realt = relationship("catolog")
+    product_realt = relationship("catalog")

@@ -2,30 +2,30 @@ import asyncio
 from flask import Blueprint, request
 from flask_cors import cross_origin
 
-from catolog.delete_catolog.delete_catolog import delete_catolog
-from catolog.get_catolog.get_catolog import get_all_catolog
-from catolog.get_catolog.get_current_catolog import get_catolog
-from catolog.post_catolog.post_catolog import new_catolog
-from catolog.put_catolog.put_catolog import update_catolog
+from catalog.delete_catalog.delete_catalog import delete_catalog
+from catalog.get_catalog.get_catalog import get_all_catalog
+from catalog.get_catalog.get_current_catalog import get_catalog
+from catalog.post_catalog.post_catalog import new_catalog
+from catalog.put_catalog.put_catalog import update_catalog
 
-catolog_profile = Blueprint('catolog_profile', __name__)
+catalog_profile = Blueprint('catalog_profile', __name__)
 
 
-@catolog_profile.route("/catolog", methods=["POST", "GET"])
+@catalog_profile.route("/catalog", methods=["POST", "GET"])
 @cross_origin()
 def cats_all():
     if request.method == "POST":
-        return asyncio.run(new_catolog())
+        return asyncio.run(new_catalog())
     if request.method == "GET":
-        return asyncio.run(get_all_catolog())
+        return asyncio.run(get_all_catalog())
 
 
-@catolog_profile.route("/catolog/<int:catolog_id>", methods=["PUT", "GET", "DELETE"])
+@catalog_profile.route("/catalog/<int:catalog_id>", methods=["PUT", "GET", "DELETE"])
 @cross_origin()
-def current_color(catolog_id):
+def current_color(catalog_id):
     if request.method == "PUT":
-        return asyncio.run(update_catolog(catolog_id))
+        return asyncio.run(update_catalog(catalog_id))
     if request.method == "GET":
-        return asyncio.run(get_catolog(catolog_id))
+        return asyncio.run(get_catalog(catalog_id))
     if request.method == "DELETE":
-        return asyncio.run(delete_catolog(catolog_id))
+        return asyncio.run(delete_catalog(catalog_id))

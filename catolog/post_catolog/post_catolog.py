@@ -6,20 +6,20 @@ from database.main import *
 from auth.auth import decorator_autme_admin
 
 @decorator_autme_admin
-async def new_catolog():
+async def new_catalog():
     try:
         body = request.json
-        n_catolog = catolog()
-        n_catolog.name = body["name"]
+        n_catalog = catalog()
+        n_catalog.name = body["name"]
         result = session.query(product_type).filter(product_type.name == body["product_type"])
         for i in result:
-            n_catolog.product_type = i.id
-        if n_catolog.product_type is None:
+            n_catalog.product_type = i.id
+        if n_catalog.product_type is None:
             return jsonify({"message": "Проверьте вводимые данные!"}), 400
         if "description" in body:
-            n_catolog.description = body["description"]
-        n_catolog.price = body["price"]
-        session.add(n_catolog)
+            n_catalog.description = body["description"]
+        n_catalog.price = body["price"]
+        session.add(n_catalog)
         session.commit()
         return jsonify({"message": "Новая поизиция успешно добавлена"}), 200
     except Exception as e:

@@ -4,8 +4,8 @@ from database.base import base
 from sqlalchemy import *
 
 
-class catolog(base):
-    __tablename__ = 'catolog'
+class catalog(base):
+    __tablename__ = 'catalog'
 
     id = Column(Integer, primary_key=True)
     name = Column(String(255))

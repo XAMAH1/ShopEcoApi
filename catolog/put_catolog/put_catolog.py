@@ -7,11 +7,11 @@ from auth.auth import decorator_autme_admin
 
 
 @decorator_autme_admin
-async def update_catolog(catolog_id):
+async def update_catalog(catalog_id):
     try:
         body = request.json
-        check_catolog: catolog = session.query(catolog).filter(catolog.id == catolog_id)
-        for i in check_catolog:
+        check_catalog: catalog = session.query(catalog).filter(catalog.id == catalog_id)
+        for i in check_catalog:
             if "name" in body:
                 i.name = body["name"]
             if "product_type" in body:
