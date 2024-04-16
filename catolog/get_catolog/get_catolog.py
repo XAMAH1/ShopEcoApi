@@ -16,7 +16,7 @@ async def get_all_catolog():
                 "product_type": i.type_realt.name,
                 "price": i.price
             })
-        return jsonify({"success": True, "catolog": catolog_all}), 200
+        return jsonify({"success": True, "catalog": catolog_all}), 200
     except Exception as e:
         print(e)
         session.rollback()
