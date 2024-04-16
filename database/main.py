@@ -6,6 +6,11 @@ import warnings
 from config import BASE_CONFIG
 from database.base import base
 
+from database.db_cart.db_cart import *
+from database.db_catolog.db_catolog import *
+from database.db_product_type.db_product_type import *
+from database.db_catolog_image.db_catolog_image import *
+
 
 warnings.filterwarnings('ignore', category=sa_exc.SAWarning)
 
