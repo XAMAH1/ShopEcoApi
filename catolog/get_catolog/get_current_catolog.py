@@ -5,7 +5,7 @@ from auth.auth import decorator_autme_user
 
 
 @decorator_autme_user
-async def get_cats(catolog_id):
+async def get_catolog(catolog_id):
     try:
         check_color = session.query(catolog).filter(catolog.id == catolog_id)
         for i in check_color:
