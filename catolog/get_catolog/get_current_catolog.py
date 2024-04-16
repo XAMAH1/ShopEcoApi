@@ -1,22 +1,22 @@
 from flask import request, jsonify
 
-from auth.auth import decorator_autme_user
 from database.main import *
+from auth.auth import decorator_autme_user
 
 
 @decorator_autme_user
-async def get_all_catolog():
+async def get_cats(catolog_id):
     try:
-        catolog_all = []
-        check_color: catolog = session.query(catolog).all()
+        check_color = session.query(catolog).filter(catolog.id == catolog_id)
         for i in check_color:
-            catolog_all.append({
+            return jsonify({
+                "success": False,
                 "id": i.id,
                 "name": i.name,
                 "product_type": i.type_realt.name,
                 "price": i.price
-            })
-        return jsonify({"success": True, "catolog": catolog_all}), 200
+            }), 200
+        return jsonify({"success": False, "message": "Ошибка! Такой позиции не существует"}), 400
     except Exception as e:
         print(e)
         session.rollback()
